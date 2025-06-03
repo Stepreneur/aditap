@@ -103,11 +103,11 @@ const [menuOpen, setMenuOpen] = useState(false);
     {/* เมนู Desktop/iPad (md ขึ้นไป) */}
     <div className="hidden sm:flex space-x-8 items-center">
       {[
-        { label: 'หน้าแรก', href: '#home' },
+        { label: 'หน้าแรก', href: '/' },
         { label: ' | ', isDivider: true },
-        { label: 'บริการ', href: '#services' },
+        { label: 'บริการ', href: '/#services' },
         { label: ' | ', isDivider: true },
-        { label: 'สินค้า', href: '#products' },
+        { label: 'สินค้า', href: '/#products' },
         { label: ' | ', isDivider: true },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: ' |    ', isDivider: true },
@@ -175,9 +175,9 @@ const [menuOpen, setMenuOpen] = useState(false);
   {menuOpen && (
     <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
       {[
-        { label: 'หน้าแรก', href: '#home' },
-        { label: 'บริการ', href: '#services' },
-        { label: 'สินค้า', href: '#products' },
+        { label: 'หน้าแรก', href: '/' },
+        { label: 'บริการ', href: '/#services' },
+        { label: 'สินค้า', href: '/#products' },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: 'ติดต่อ', href: '/contact' },
       ].map((item, index) => (

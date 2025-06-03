@@ -65,22 +65,28 @@ const ContactSection = () => {
       : 'bg-transparent'
   }`}
 >
- <div className="max-w-6xl mx-auto px-4 py-4 flex justify-items-center">
-  <div className="flex justify-between items-center mx-auto">
-    <div className="flex space-x-8">
+  <div className="max-w-6xl mx-auto px-4 py-4 flex justify-end sm:justify-center items-center">
+
+    {/* เมนู Desktop/iPad (md ขึ้นไป) */}
+    <div className="hidden sm:flex space-x-8 items-center">
       {[
-        { label: 'หน้าแรก', href: '/home' },
-        { label: '|', isDivider: true },
-        { label: 'บริการ', href: '/home#services' },
-        { label: '|', isDivider: true },
-        { label: 'สินค้า', href: '/home#products' },
-        { label: '|', isDivider: true },
+        { label: 'หน้าแรก', href: '/' },
+        { label: ' | ', isDivider: true },
+        { label: 'บริการ', href: '/#services' },
+        { label: ' | ', isDivider: true },
+        { label: 'สินค้า', href: '/#products' },
+        { label: ' | ', isDivider: true },
         { label: 'ผลงาน', href: '/portfolio' },
-        { label: '|', isDivider: true },
+        { label: ' |    ', isDivider: true },
         { label: 'ติดต่อ', href: '/contact' },
       ].map((item, index) =>
         item.isDivider ? (
-          <span key={index} className="text-white select-none pointer-events-none">|</span>
+          <span
+            key={index}
+            className="text-white select-none pointer-events-none"
+          >
+            |
+          </span>
         ) : (
           <a
             key={index}
@@ -92,9 +98,67 @@ const ContactSection = () => {
         )
       )}
     </div>
-  </div>
-</div>
 
+    {/* ปุ่ม Hamburger (มือถือ) */}
+    <div className="sm:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="text-white focus:outline-none"
+      >
+        {menuOpen ? (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* เมนูมือถือ */}
+  {menuOpen && (
+    <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
+      {[
+        { label: 'หน้าแรก', href: '/' },
+        { label: 'บริการ', href: '/#services' },
+        { label: 'สินค้า', href: '/#products' },
+        { label: 'ผลงาน', href: '/portfolio' },
+        { label: 'ติดต่อ', href: '/contact' },
+      ].map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          className="block text-white hover:text-green-300 transition-colors duration-300"
+          onClick={() => setMenuOpen(false)}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  )}
 </nav>
       {/* Background Image */}
       <Image
