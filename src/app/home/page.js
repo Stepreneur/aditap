@@ -1,4 +1,6 @@
 "use client"
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageCircle, Truck, Scissors, Package, TreePine, MapPin, Star, Leaf, Users, Award, Clock } from 'lucide-react';
 import Image from 'next/image';
@@ -8,6 +10,12 @@ const GrassSellingWebsite = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+      AOS.init({
+      duration: 200,       // Animation duration
+      easing: 'ease-in-out', // Easing pattern
+      once: true,          // Whether animation should happen only once
+      mirror: false,       // Whether elements should animate out while scrolling past them
+    });
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -17,37 +25,31 @@ const GrassSellingWebsite = () => {
     {
       name: 'หญ้านวลน้อย',
       description: 'หญ้าคุณภาพสูง เหมาะสำหรับสนามหญ้าทั่วไป ทนแล้ง ทนเหยียบย่ำ',
-      price: 'ราคา 15 บาท/แผ่น',
       image: '/product/nuannoy.jpg'
     },
     {
       name: 'หญ้าญี่ปุ่น',
       description: 'หญ้าเกรดพรีเมี่ยม นุ่ม สีเขียวสวย เหมาะสำหรับสนามกอล์ฟ',
-      price: 'ราคา 25 บาท/แผ่น',
       image: '/product/japan.jpg'
     },
     {
       name: 'หญ้ามาเลเซีย',
-      description: 'หญ้าใบหนา ทนร้อน เหมาะสำหรับภูมิอากาศเมืองไทย',
-      price: 'ราคา 18 บาท/แผ่น',
+      description: 'หญ้าใบหนา ทนร้อน เหมาะสำหรับภูมิอากาศเมืองไทย ชอบอยู่ในแดดรำไรและสามารถปลูกกลางแดดได้',
       image: '/product/malaysia.jpg'
     },
     {
       name: 'หญ้าพลาสพาลั่ม',
       description: 'หญ้าใบแคบ ทนแล้ง เหมาะสำหรับพื้นที่แห้งแล้ง',
-      price: 'ราคา 20 บาท/แผ่น',
       image: '/product/plaspalum.jpg'
     },
     {
       name: 'หญ้าเมอร์บิวด้า',
       description: 'หญ้าทนทาน เจริญเติบโตเร็ว เหมาะสำหรับสนามกีฬา',
-      price: 'ราคา 22 บาท/แผ่น',
       image: '/product/bermuda.jpg'
     },
     {
       name: 'หญ้าไทเปย์',
       description: 'หญ้าใบเล็ก สีเขียวเข้ม เหมาะสำหรับการตกแต่ง',
-      price: 'ราคา 24 บาท/แผ่น',
       image: '/product/thaipay.jpg'
     }
   ];
@@ -56,7 +58,7 @@ const GrassSellingWebsite = () => {
     {
       icon: <Leaf className="w-8 h-8" />,
       title: 'บริการขายหญ้า',
-      description: 'หญ้าคุณภาพสูงหลากหลายชนิด ราคาโรงงาน ส่งทั่วประเทศ มีเก็บปลายทาง',
+      description: 'หญ้าคุณภาพสูงหลากหลายชนิด ราคาหน้าสวนไม่ผ่านแม่ค้าคนกลาง ส่งทั่วประเทศ มีเก็บปลายทาง',
       image: '/img/allgrass.png',
       href : '#products'
     },
@@ -152,14 +154,20 @@ const GrassSellingWebsite = () => {
             ด้วยบริการ หญ้าจัดสวนทุกชนิดเกรดคัดสรรคุณภาพสูง และจัดสวนครบวงจร ทั่วประเทศ
           </p>
           
-          <div className="flex flex-row gap-4 justify-center animate-fade-in-up animation-delay-600">
-            <a
+          <div className="flex flex-row gap-4 justify-center ">
+            <a data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
               href="#services"
               className="bg-gradient-to-r from-green-400 to-yellow-500 hover:from-transparent hover:to-transparent box-border hover:border hover:border-green-500 text-white hover:text-green-500 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
             >
               ดูบริการที่เรามี
             </a>
-            <a
+            <a data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
               href="tel:0801738530"
               className="bg-white/20 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
@@ -169,7 +177,7 @@ const GrassSellingWebsite = () => {
           </div>
 
           {/* Product Benefits */}
-          <div className="grid grid-cols-3 gap-6 mt-16 animate-fade-in-up animation-delay-900">
+          <div className="grid grid-cols-3 gap-6 mt-16 animate-fade-in-up animation-delay-400">
             <div className="bg-black/8 backdrop-blur-md rounded-2xl p-6 border border-white/20">
               <div className="text-4xl mb-4">🚛</div>
               <h3 className="text-xl font-semibold mb-2">ส่งทั่วประเทศ</h3>
@@ -221,7 +229,10 @@ const GrassSellingWebsite = () => {
     />
 
     {/* CTA Button */}
- <a
+ <a data-aos="zoom-in"
+  data-aos-delay="300"
+  data-aos-duration="400"
+  data-aos-easing="ease-in-out"
   href={service.href}
   className="group inline-flex items-center justify-center mt-6 px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-white text-green-700 border border-green-600 shadow-sm hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300"
 >
@@ -271,16 +282,26 @@ const GrassSellingWebsite = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-orange-500">{product.price}</span>
-                   <button
-  className="group inline-flex items-center gap-2 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-medium text-sm md:text-base px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
->
-  <span className="transition-transform group-hover:-translate-y-[1px]">💬</span>
-  สอบถาม
-</button>
+                 <div className="w-full flex justify-center">
+  <div className="flex gap-4 items-center">
+    <a href='https://line.me/ti/p/zSV34qgq4u' target='_blank' className="group inline-flex items-center gap-2 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-medium text-sm md:text-base px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
+      <img
+        src="/img/line.webp"
+        className="transition-transform group-hover:-translate-y-[1px] w-8 h-8 rounded-2xl"
+        alt="ไลน์"
+      />
+      สอบถามราคา
+    </a>
+    <a
+      href="tel:0801738530"
+      className="group inline-flex items-center gap-2 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-medium text-sm md:text-base px-5 py-3 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
+    >
+      <Phone className="w-5 h-5 group-hover:-translate-y-[1px] transition-transform" />
+      
+    </a>
+  </div>
+</div>
 
-                  </div>
                 </div>
               </div>
             ))}
@@ -297,7 +318,10 @@ const GrassSellingWebsite = () => {
 <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto px-4">
 
   {/* รีวิวผลงาน Button */}
-  <a
+  <a data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
     href="/portfolio"
     className="relative group bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300"
   >
@@ -320,8 +344,11 @@ const GrassSellingWebsite = () => {
   </a>
 
   {/* แผนที่สวน Button */}
-  <a
-    href="https://maps.google.com"
+  <a data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
+    href="https://www.google.com/maps/place/14%C2%B001'22.5%22N+100%C2%B053'25.9%22E/@14.022903,100.8879441,17z/data=!3m1!4b1!4m4!3m3!8m2!3d14.022903!4d100.890519?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
     target="_blank"
     rel="noopener noreferrer"
     className="relative group bg-gradient-to-r from-gray-100 via-white to-gray-50 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300 border border-green-200"
@@ -382,7 +409,10 @@ const GrassSellingWebsite = () => {
         </div>
        <div className="mt-16 flex justify-center px-4">
   {/* รีวิวผลงาน Button */}
-  <a
+  <a data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="900"
+              data-aos-easing="ease-in-out"
     href="/portfolio"
     className="relative group bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300"
   >
@@ -418,10 +448,10 @@ const GrassSellingWebsite = () => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
       
-    <a href="https://line.me/ti/p/~grassservice" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
+    <a href="https://line.me/ti/p/zSV34qgq4u" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
       <img src="/img/line.webp" alt="LINE Logo" className="w-6 h-6 mx-auto mb-3" />
       <p className="font-bold text-gray-800">แชททาง LINE</p>
-      <p className="text-green-600">@grassservice</p>
+      <p className="text-green-600">id : jirayut6812</p>
     </a>
 
     <a href="tel:0801738530" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
@@ -440,10 +470,10 @@ const GrassSellingWebsite = () => {
        <a href="https://www.tiktok.com/@jirayut6112546?_t=ZS-8wrp3jqXqUb&_r=1" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
         <img src="/img/tiktok.webp" alt="TikTok Logo" className="w-10 h-10 mx-auto mb-3" />
         <p className="font-bold text-gray-800">ติดตามใน TikTok</p>
-        <p className="text-green-600">@jirayut6112546</p>
+        <p className="text-green-600">jirayut6112546</p>
       </a>
 
-      <a href="https://goo.gl/maps/xxxx" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
+      <a href="https://www.google.com/maps/place/14%C2%B001'22.5%22N+100%C2%B053'25.9%22E/@14.022903,100.8879441,17z/data=!3m1!4b1!4m4!3m3!8m2!3d14.022903!4d100.890519?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
         <MapPin className="w-8 h-8 mx-auto text-green-600 mb-3" />
         <p className="font-bold text-gray-800">เยี่ยมชมสวน</p>
         <p className="text-green-600">เปิดทุกวัน จ.-อา.</p>

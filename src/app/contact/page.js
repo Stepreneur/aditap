@@ -22,32 +22,34 @@ const ContactSection = () => {
     {
       platform: 'LINE',
       icon: <img src="/img/line.webp" alt="Line" className="w-8 h-8" />,
-      contact: '@panlawn',
-      link: 'https://line.me/ti/p/~@panlawn',
+      contact: 'ID : jirayut6812',
+      link: 'https://line.me/ti/p/zSV34qgq4u',
+    },
+    {
+    platform: 'Google Maps',
+    icon: <MapPin className="w-8 h-8 text-green-600" />,
+    contact: 'ไร่หญ้าสมสมัยการ์เด้น',
+    link: 'https://maps.app.goo.gl/EdEMJGsuBW4GNTQS6', // เปลี่ยนพิกัดตามจริงได้เลย
     },
     {
       platform: 'Facebook',
       icon: <img src="/img/facebook.webp" alt="Facebook" className="w-8 h-8" />,
-      contact: 'แผ่นหญ้า ปูสนาม จัดสวน',
-      link: 'https://www.facebook.com/panlawn',
+      contact: 'ไร่หญ้าสมสมัยการ์เด้น.com ',
+      link: 'https://www.facebook.com/share/15yK1jepgU/',
     },
     {
       platform: 'TikTok',
       icon: <img src="/img/tiktok.webp" alt="TikTok" className="w-8 h-8" />,
-      contact: '@panlawn.tiktok',
-      link: 'https://www.tiktok.com/@panlawn.tiktok',
+      contact: 'jirayut6112546',
+      link: 'https://www.tiktok.com/@jirayut6112546?_t=ZS-8wrp3jqXqUb&_r=1',
     },
   ];
 
   const businessHours = [
     {
-      day: 'จันทร์ – เสาร์',
-      hours: '08:00 – 17:00 น.',
-    },
-    {
-      day: 'อาทิตย์',
-      hours: 'หยุดทำการ',
-    },
+      day: 'จันทร์ – อาทิตย์',
+      hours: '24 ชม.',
+    }
   ];
 
   const serviceAreas = [

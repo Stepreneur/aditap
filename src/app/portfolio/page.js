@@ -16,32 +16,10 @@ const PortfolioPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const portfolioItems = [
-    { id: 1, image: '/img/rev1.jpg' },
-    { id: 2, image: '/img/rev2.jpg' },
-    { id: 3, image: '/img/rev3.jpg' },
-    { id: 4, image: '/img/rev4.jpg' },
-    { id: 5, image: '/img/rev5.jpg' },
-    { id: 6, image: '/img/rev6.jpg' },
-    { id: 7, image: '/img/hero1.jpg' },
-    { id: 8, image: '/img/allgrass.png' },
-    { id: 9, image: '/img/tree.png' },
-    { id: 10, image: '/img/rev1.jpg' },
-    { id: 11, image: '/img/rev2.jpg' },
-    { id: 12, image: '/img/rev3.jpg' },
-    { id: 13, image: '/img/rev4.jpg' },
-    { id: 14, image: '/img/rev5.jpg' },
-    { id: 15, image: '/img/rev6.jpg' },
-    { id: 16, image: '/img/hero1.jpg' },
-    { id: 17, image: '/img/allgrass.png' },
-    { id: 18, image: '/img/tree.png' },
-    { id: 19, image: '/img/rev1.jpg' },
-    { id: 20, image: '/img/rev2.jpg' },
-    { id: 21, image: '/img/rev3.jpg' },
-    { id: 22, image: '/img/rev4.jpg' },
-    { id: 23, image: '/img/rev5.jpg' },
-    { id: 24, image: '/img/rev6.jpg' }
-  ];
+ const portfolioItems = Array.from({ length: 112 }, (_, i) => ({
+  id: i + 1,
+  image: `/rev/${i + 1}.jpg`,
+}));
 
   const openLightbox = (image, index) => {
     setSelectedImage(image);
@@ -283,16 +261,23 @@ const PortfolioPage = () => {
       )}
 
       {/* Floating Contact Button */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <a
-          href="https://line.me/ti/p/~grassservice"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </a>
-      </div>
+     <div className="fixed bottom-6 right-6 z-50">
+  <a
+    href="https://line.me/ti/p/zSV34qgq4u"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group relative flex items-center justify-center w-16 h-16 bg-[#00C300] rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
+  >
+    <img
+      src="/img/line.webp"
+      alt="LINE"
+      className="w-8 h-8 rounded-2xl"
+    />
+    <span className="absolute bottom-full mb-2 px-3 py-1 text-xs text-white bg-black bg-opacity-80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+      แชทผ่าน LINE
+    </span>
+  </a>
+</div>
 
       <style jsx>{`
         @keyframes fade-in-up {
