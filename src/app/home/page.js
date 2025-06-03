@@ -8,7 +8,7 @@ import Image from 'next/image';
 const GrassSellingWebsite = () => {
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
-
+const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
       AOS.init({
       duration: 200,       // Animation duration
@@ -98,22 +98,28 @@ const GrassSellingWebsite = () => {
       : 'bg-transparent'
   }`}
 >
- <div className="max-w-6xl mx-auto px-4 py-4 flex justify-items-center">
-  <div className="flex justify-between items-center mx-auto">
-    <div className="flex space-x-8">
+  <div className="max-w-6xl mx-auto px-4 py-4 flex justify-end sm:justify-center items-center">
+
+    {/* เมนู Desktop/iPad (md ขึ้นไป) */}
+    <div className="hidden sm:flex space-x-8 items-center">
       {[
         { label: 'หน้าแรก', href: '#home' },
-        { label: '|', isDivider: true },
+        { label: ' | ', isDivider: true },
         { label: 'บริการ', href: '#services' },
-        { label: '|', isDivider: true },
+        { label: ' | ', isDivider: true },
         { label: 'สินค้า', href: '#products' },
-        { label: '|', isDivider: true },
+        { label: ' | ', isDivider: true },
         { label: 'ผลงาน', href: '/portfolio' },
-        { label: '|', isDivider: true },
+        { label: ' |    ', isDivider: true },
         { label: 'ติดต่อ', href: '/contact' },
       ].map((item, index) =>
         item.isDivider ? (
-          <span key={index} className="text-white select-none pointer-events-none">|</span>
+          <span
+            key={index}
+            className="text-white select-none pointer-events-none"
+          >
+            |
+          </span>
         ) : (
           <a
             key={index}
@@ -125,80 +131,151 @@ const GrassSellingWebsite = () => {
         )
       )}
     </div>
-  </div>
-</div>
 
+    {/* ปุ่ม Hamburger (มือถือ) */}
+    <div className="sm:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="text-white focus:outline-none"
+      >
+        {menuOpen ? (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        )}
+      </button>
+    </div>
+  </div>
+
+  {/* เมนูมือถือ */}
+  {menuOpen && (
+    <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
+      {[
+        { label: 'หน้าแรก', href: '#home' },
+        { label: 'บริการ', href: '#services' },
+        { label: 'สินค้า', href: '#products' },
+        { label: 'ผลงาน', href: '/portfolio' },
+        { label: 'ติดต่อ', href: '/contact' },
+      ].map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          className="block text-white hover:text-green-300 transition-colors duration-300"
+          onClick={() => setMenuOpen(false)}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  )}
 </nav>
 
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-       <Image
-        src="/img/hero1.jpg"
-        alt="ภาพหลัก"
-        fill
-        className="object-cover opacity-45"
-        quality={100} // ให้ Next.js render ภาพคุณภาพสูงสุด
-        priority // preload ภาพใน Hero section
-      />
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-30">
+  <Image
+    src="/img/hero1.jpg"
+    alt="ภาพหลัก"
+    fill
+    className="object-cover opacity-45"
+    quality={100}
+    priority
+  />
 
-       
+  <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6 sm:px-10">
+    <h1 className="text-4xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
+      ขายหญ้าจัดสวน<span className="block sm:inline">ทุกชนิด</span>
+    </h1>
 
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up lg:mt-10">
-            ขายหญ้าจัดสวน<span className='block sm:inline'>ทุกชนิด</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-300">
-            หมดปัญหา พื้นที่รกร้าง ไม่มีชีวิตชีวา
-            <br />
-            ด้วยบริการ หญ้าจัดสวนทุกชนิดเกรดคัดสรรคุณภาพสูง และจัดสวนครบวงจร ทั่วประเทศ
-          </p>
-          
-          <div className="flex flex-row gap-4 justify-center ">
-            <a data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="900"
-              data-aos-easing="ease-in-out"
-              href="#services"
-              className="bg-gradient-to-r from-green-400 to-yellow-500 hover:from-transparent hover:to-transparent box-border hover:border hover:border-green-500 text-white hover:text-green-500 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
-            >
-              ดูบริการที่เรามี
-            </a>
-            <a data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="900"
-              data-aos-easing="ease-in-out"
-              href="tel:0801738530"
-              className="bg-white/20 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-            >
-              <Phone className="inline w-5 h-5 mr-2" />
-              โทรเลย 080-173-8530
-            </a>
-          </div>
+    <p className="text-base sm:text-lg md:text-2xl mb-6 sm:mb-8 animate-fade-in-up animation-delay-300 leading-relaxed sm:leading-normal">
+      หมดปัญหา พื้นที่รกร้าง ไม่มีชีวิตชีวา
+      <br className="hidden sm:block" />
+      ด้วยบริการ หญ้าจัดสวนทุกชนิดเกรดคัดสรรคุณภาพสูง และจัดสวนครบวงจร ทั่วประเทศ
+    </p>
 
-          {/* Product Benefits */}
-          <div className="grid grid-cols-3 gap-6 mt-16 animate-fade-in-up animation-delay-400">
-            <div className="bg-black/8 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl mb-4">🚛</div>
-              <h3 className="text-xl font-semibold mb-2">ส่งทั่วประเทศ</h3>
-               <div className="border-b border-white/20 mb-3 hidden sm:inline"></div>
-              <p className='hidden sm:inline'>มีเก็บปลายทาง (ขอมัดจำก่อน)</p>
-            </div>
-            <div className="bg-black/8 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl mb-4">🌿</div>
-              <h3 className="text-xl font-semibold mb-2">หญ้าจัดสวนทุกชนิด</h3>
-               <div className="border-b border-white/20 mb-3 hidden sm:inline"></div>
-              <p className='hidden sm:inline'>ส่งจริงแล้วกว่า 3,500 ออเดอร์ – ลูกค้าทั่วไทยไว้วางใจ</p>
-            </div>
-            <div className="bg-black/8 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-              <div className="text-4xl mb-4">🧑🏿‍🌾</div>
-              <h3 className="text-xl font-semibold mb-2">จัดสวนครบวงจร</h3>
-               <div className="border-b border-white/20 mb-3 hidden sm:inline"></div>
-              <p className='hidden sm:inline'>ประสบการณ์จัดสวนกว่า 10 ปี – งานเนียบ ส่งไว ดูแลครบ</p>
-            </div>
-          </div>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start">
+      <a
+        data-aos="zoom-in"
+        data-aos-delay="300"
+        data-aos-duration="900"
+        data-aos-easing="ease-in-out"
+        href="#services"
+        className="w-full sm:w-auto text-center bg-gradient-to-r from-green-400 to-yellow-500 hover:from-transparent hover:to-transparent box-border hover:border hover:border-green-500 text-white hover:text-green-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+      >
+        ดูบริการที่เรามี
+      </a>
+
+      <a
+        data-aos="zoom-in"
+        data-aos-delay="300"
+        data-aos-duration="900"
+        data-aos-easing="ease-in-out"
+        href="tel:0801738530"
+        className="w-full sm:w-auto text-center bg-white/20 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+      >
+        <Phone className="inline w-5 h-5 mr-2" />
+        โทรเลย 080-173-8530
+      </a>
+    </div>
+
+    {/* Product Benefits */}
+    <div className="mb-30 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-6 mt-12 sm:mt-16 animate-fade-in-up animation-delay-400 px-4 sm:px-0">
+      {[
+        {
+          icon: '🚛',
+          title: 'ส่งทั่วประเทศ',
+          desc: 'มีเก็บปลายทาง (ขอมัดจำก่อน)',
+        },
+        {
+          icon: '🌿',
+          title: 'หญ้าจัดสวนทุกชนิด',
+          desc: 'ส่งจริงแล้วกว่า 3,500 ออเดอร์ – ลูกค้าทั่วไทยไว้วางใจ',
+        },
+        {
+          icon: '🧑🏿‍🌾',
+          title: 'จัดสวนครบวงจร',
+          desc: 'ประสบการณ์จัดสวนกว่า 10 ปี – งานเนียบ ส่งไว ดูแลครบ',
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className= " bg-black/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-left text-sm sm:text-base"
+        >
+          <div className="text-3xl sm:text-4xl mb-3">{item.icon}</div>
+          <h3 className="text-lg sm:text-xl font-semibold mb-2">{item.title}</h3>
+          <div className="border-b border-white/20 mb-2 hidden sm:block"></div>
+          <p className="block sm:hidden">{item.desc.slice(0, 40)}...</p>
+          <p className="hidden sm:block">{item.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <section id="services" className="py-20 bg-gray-50">
