@@ -4,8 +4,10 @@ import { Phone, Clock4, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 const ContactSection = () => {
-     const [scrollY, setScrollY] = useState(0);
-      const [activeSection, setActiveSection] = useState('home');
+  
+      const [scrollY, setScrollY] = useState(0);
+       const [activeSection, setActiveSection] = useState('home');
+     const [menuOpen, setMenuOpen] = useState(false);
     
       useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
