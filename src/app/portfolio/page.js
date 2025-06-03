@@ -5,6 +5,7 @@ import { Phone, MessageCircle, Truck, Scissors, Package, TreePine, MapPin, Star,
 
 
 const PortfolioPage = () => {
+  
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
