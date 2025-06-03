@@ -9,6 +9,8 @@ const PortfolioPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [displayedItems, setDisplayedItems] = useState(20); // เริ่มต้นแสดง 20 รูป
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -16,10 +18,26 @@ const PortfolioPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
- const portfolioItems = Array.from({ length: 112 }, (_, i) => ({
-  id: i + 1,
-  image: `/rev/${i + 1}.jpg`,
-}));
+  const totalImages = 112;
+  const itemsPerLoad = 20;
+
+  // สร้าง portfolio items ทั้งหมด
+  const allPortfolioItems = Array.from({ length: totalImages }, (_, i) => ({
+    id: i + 1,
+    image: `/rev/${i + 1}.jpg`,
+  }));
+
+  // แสดงเฉพาะรูปที่ต้องการ
+  const portfolioItems = allPortfolioItems.slice(0, displayedItems);
+
+  const loadMoreImages = () => {
+    setIsLoading(true);
+    // จำลองการโหลด
+    setTimeout(() => {
+      setDisplayedItems(prev => Math.min(prev + itemsPerLoad, totalImages));
+      setIsLoading(false);
+    }, 500);
+  };
 
   const openLightbox = (image, index) => {
     setSelectedImage(image);
@@ -41,6 +59,8 @@ const PortfolioPage = () => {
     setCurrentImageIndex(prevIndex);
     setSelectedImage(portfolioItems[prevIndex]);
   };
+
+  const hasMoreImages = displayedItems < totalImages;
 
   return (
     <div className="min-h-screen bg-white">
@@ -162,12 +182,50 @@ const PortfolioPage = () => {
             ))}
           </div>
           
-          <div className="text-center mt-16">
+          {/* Load More Button */}
+          {hasMoreImages && (
+            <div className="text-center mt-12">
+              <button
+                onClick={loadMoreImages}
+                disabled={isLoading}
+                className={`
+                  inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform
+                  ${isLoading 
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                    : 'bg-gradient-to-r from-green-600 to-emerald-500 text-white hover:from-green-700 hover:to-emerald-600 hover:scale-105 shadow-lg hover:shadow-xl'
+                  }
+                `}
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+                    กำลังโหลด...
+                  </>
+                ) : (
+                  <>
+                    <span>โหลดรูปเพิ่ม</span>
+                    <span className="bg-white/20 rounded-full px-3 py-1 text-sm">
+                      +{Math.min(itemsPerLoad, totalImages - displayedItems)} รูป
+                    </span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+          
+          <div className="text-center mt-8">
             <div className="inline-flex items-center gap-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl px-8 py-6 border border-green-100">
               <div className="text-4xl">🌿</div>
               <div>
-                <p className="text-green-800 font-bold text-lg">แสดงผลงานทั้งหมด {portfolioItems.length} รายการ</p>
+                <p className="text-green-800 font-bold text-lg">
+                  แสดงผลงาน {displayedItems} จาก {totalImages} รายการ
+                </p>
                 <p className="text-green-600 text-sm">คลิกที่รูปภาพเพื่อดูแบบขยาย</p>
+                {displayedItems < totalImages && (
+                  <p className="text-green-500 text-xs mt-1">
+                    เหลืออีก {totalImages - displayedItems} รูป
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -184,10 +242,10 @@ const PortfolioPage = () => {
       
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             
-          <a href="https://line.me/ti/p/~grassservice" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
+          <a href="https://line.me/ti/p/zSV34qgq4u" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
             <img src="/img/line.webp" alt="LINE Logo" className="w-6 h-6 mx-auto mb-3" />
             <p className="font-bold text-gray-800">แชททาง LINE</p>
-            <p className="text-green-600">@grassservice</p>
+            <p className="text-green-600">ID : jirayut681</p>
           </a>
       
           <a href="tel:0801738530" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
@@ -209,7 +267,7 @@ const PortfolioPage = () => {
               <p className="text-green-600">@jirayut6112546</p>
             </a>
       
-            <a href="https://goo.gl/maps/xxxx" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
+            <a href="https://maps.app.goo.gl/tyL7cPPNYUea5VQs8" target="_blank" rel="noopener noreferrer" className="bg-white border hover:border-green-500 shadow-md rounded-2xl p-6 transition hover:scale-105">
               <MapPin className="w-8 h-8 mx-auto text-green-600 mb-3" />
               <p className="font-bold text-gray-800">เยี่ยมชมสวน</p>
               <p className="text-green-600">เปิดทุกวัน จ.-อา.</p>
@@ -261,23 +319,16 @@ const PortfolioPage = () => {
       )}
 
       {/* Floating Contact Button */}
-     <div className="fixed bottom-6 right-6 z-50">
-  <a
-    href="https://line.me/ti/p/zSV34qgq4u"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group relative flex items-center justify-center w-16 h-16 bg-[#00C300] rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
-  >
-    <img
-      src="/img/line.webp"
-      alt="LINE"
-      className="w-8 h-8 rounded-2xl"
-    />
-    <span className="absolute bottom-full mb-2 px-3 py-1 text-xs text-white bg-black bg-opacity-80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-      แชทผ่าน LINE
-    </span>
-  </a>
-</div>
+      <div className="fixed bottom-6 right-6 z-40">
+        <a
+          href="https://line.me/ti/p/zSV34qgq4u"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 animate-pulse"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </a>
+      </div>
 
       <style jsx>{`
         @keyframes fade-in-up {
