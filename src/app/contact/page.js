@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Phone, Clock4, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
