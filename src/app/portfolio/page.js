@@ -80,9 +80,9 @@ const PortfolioPage = () => {
       {[
         { label: 'หน้าแรก', href: '/' },
         { label: ' | ', isDivider: true },
-        { label: 'บริการ', href: '/#services' },
+        { label: 'บริการ', href: '/service#services' },
         { label: ' | ', isDivider: true },
-        { label: 'สินค้า', href: '/#products' },
+        { label: 'สินค้า', href: '/service#products' },
         { label: ' | ', isDivider: true },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: ' |    ', isDivider: true },
@@ -151,8 +151,8 @@ const PortfolioPage = () => {
     <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
       {[
         { label: 'หน้าแรก', href: '/' },
-        { label: 'บริการ', href: '/#services' },
-        { label: 'สินค้า', href: '/#products' },
+        { label: 'บริการ', href: '/service#services' },
+        { label: 'สินค้า', href: '/service#products' },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: 'ติดต่อ', href: '/contact' },
       ].map((item, index) => (

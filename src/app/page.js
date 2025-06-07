@@ -105,9 +105,9 @@ const [menuOpen, setMenuOpen] = useState(false);
       {[
         { label: 'หน้าแรก', href: '/' },
         { label: ' | ', isDivider: true },
-        { label: 'บริการ', href: '/#services' },
+        { label: 'บริการ', href: '/service#services' },
         { label: ' | ', isDivider: true },
-        { label: 'สินค้า', href: '/#products' },
+        { label: 'สินค้า', href: '/service#products' },
         { label: ' | ', isDivider: true },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: ' |    ', isDivider: true },
@@ -176,8 +176,8 @@ const [menuOpen, setMenuOpen] = useState(false);
     <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
       {[
         { label: 'หน้าแรก', href: '/' },
-        { label: 'บริการ', href: '/#services' },
-        { label: 'สินค้า', href: '/#products' },
+        { label: 'บริการ', href: '/service#services' },
+        { label: 'สินค้า', href: '/service#products' },
         { label: 'ผลงาน', href: '/portfolio' },
         { label: 'ติดต่อ', href: '/contact' },
       ].map((item, index) => (
@@ -195,324 +195,440 @@ const [menuOpen, setMenuOpen] = useState(false);
 </nav>
 
 
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black pt-30">
-  <Image
-    src="/img/hero1.jpg"
-    alt="ภาพหลัก"
-    fill
-    className="object-cover opacity-45"
-    quality={100}
-    priority
-  />
-
-  <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6 sm:px-10">
-    <h1 className="text-4xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in-up">
-      ขายหญ้าจัดสวน<span className="block sm:inline">ทุกชนิด</span>
+   <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  {/* Multi-layer Background System */}
+  <div className="absolute inset-0 bg-[url('/img/hero1.jpg')] bg-cover bg-center bg-fixed"></div>
+  <div className="absolute inset-0 bg-black/70"></div>
+  
+  {/* Advanced Animated Elements */}
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-48 md:h-48 bg-green-400/10 rounded-full blur-3xl animate-pulse"></div>
+    <div className="absolute top-3/4 right-1/4 w-40 h-40 md:w-60 md:h-60 bg-yellow-400/8 rounded-full blur-3xl animate-bounce"></div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[600px] md:h-[600px] bg-emerald-500/5 rounded-full blur-3xl animate-pulse"></div>
+  </div>
+  
+  {/* Floating Particles Effect */}
+  <div className="absolute inset-0">
+    {[...Array(6)].map((_, i) => (
+      <div
+        key={i}
+        className={`absolute w-2 h-2 bg-green-400/30 rounded-full animate-pulse`}
+        style={{
+          left: `${20 + i * 15}%`,
+          top: `${30 + i * 10}%`,
+          animationDelay: `${i * 0.5}s`,
+          animationDuration: `${3 + i}s`
+        }}
+      ></div>
+    ))}
+  </div>
+  
+  <div className="relative z-20 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    {/* Premium Badge */}
+    <div className="mb-8 md:mb-12 inline-block animate-fade-in-down">
+      <div className="relative group">
+        <div className="absolute -inset-2 bg-gradient-to-r from-green-400 via-emerald-500 to-yellow-400 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+        <span className="relative px-6 py-3 md:px-8 md:py-4 bg-black/30 backdrop-blur-xl rounded-full text-sm md:text-base font-bold border border-green-400/40 shadow-2xl">
+          <span className="text-2xl mr-2">🌟</span>
+          Premium Landscape Solutions
+        </span>
+      </div>
+    </div>
+    
+    {/* Main Heading - Ultra Responsive */}
+    <h1 className="mb-8 md:mb-12 animate-fade-in-up">
+      <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-white via-green-200 to-yellow-200 bg-clip-text text-transparent leading-tight mb-4">
+        จัดสวนครบวงจร
+      </span>
+      <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light text-green-300 leading-relaxed">
+        สร้างพื้นที่สีเขียวแห่งความสุข
+      </span>
     </h1>
 
-    <p className="text-base sm:text-lg md:text-2xl mb-6 sm:mb-8 animate-fade-in-up animation-delay-300 leading-relaxed sm:leading-normal">
-      หมดปัญหา พื้นที่รกร้าง ไม่มีชีวิตชีวา
-      <br className="hidden sm:block" />
-      ด้วยบริการ หญ้าจัดสวนทุกชนิดเกรดคัดสรรคุณภาพสูง และจัดสวนครบวงจร ทั่วประเทศ
-    </p>
+    {/* Description - Perfect Mobile Typography */}
+    <div className="mb-10 md:mb-16 animate-fade-in-up animation-delay-300">
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-200 max-w-4xl mx-auto mb-4">
+        เปลี่ยนพื้นที่ว่างเปล่าให้กลายเป็นสวนสวยด้วยบริการออกแบบและติดตั้งระบบสวนแบบครบวงจร
+      </p>
+      <p className="text-sm sm:text-base md:text-lg text-green-300 font-medium max-w-3xl mx-auto">
+        ⭐ พร้อมการันตีคุณภาพระดับมาตรฐานสากล ประสบการณ์กว่า 15 ปี
+      </p>
+    </div>
 
-    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-start">
+    {/* CTA Buttons - Ultra Responsive */}
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 md:mb-20 animate-fade-in-up animation-delay-600">
       <a
-        data-aos="zoom-in"
-        data-aos-delay="300"
-        data-aos-duration="900"
-        data-aos-easing="ease-in-out"
         href="#services"
-        className="w-full sm:w-auto text-center bg-gradient-to-r from-green-400 to-yellow-500 hover:from-transparent hover:to-transparent box-border hover:border hover:border-green-500 text-white hover:text-green-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+        className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 bg-gradient-to-r from-green-500 via-emerald-600 to-green-600 hover:from-green-400 hover:via-emerald-500 hover:to-green-500 text-white rounded-2xl font-bold text-base sm:text-lg shadow-2xl hover:shadow-green-500/30 transition-all duration-500 transform hover:scale-105 hover:rotate-1 overflow-hidden"
       >
-        ดูบริการที่เรามี
+        <div className="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <span className="relative flex items-center justify-center gap-3">
+          <span className="text-xl">🎯</span>
+          <span>เช็คบริการของเรา</span>
+          <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </span>
       </a>
 
       <a
-        data-aos="zoom-in"
-        data-aos-delay="300"
-        data-aos-duration="900"
-        data-aos-easing="ease-in-out"
         href="tel:0801738530"
-        className="w-full sm:w-auto text-center bg-white/20 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+        className="group relative w-full sm:w-auto px-8 sm:px-10 lg:px-12 py-4 sm:py-5 bg-black/20 backdrop-blur-xl border-2 border-white/40 text-white hover:bg-white hover:text-green-700 hover:border-green-400 rounded-2xl font-bold text-base sm:text-lg transition-all duration-500 transform hover:scale-105 hover:-rotate-1 shadow-xl hover:shadow-2xl"
       >
-        <Phone className="inline w-5 h-5 mr-2" />
-        โทรเลย 080-173-8530
+        <span className="flex items-center justify-center gap-3">
+          <span className="text-xl">📞</span>
+          <span className="hidden sm:inline">โทรเลย </span>
+          <span>080-173-8530</span>
+        </span>
       </a>
     </div>
 
-    {/* Product Benefits */}
-    <div className="mb-30 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-6 mt-12 sm:mt-16 animate-fade-in-up animation-delay-400 px-4 sm:px-0">
+    {/* Feature Cards - Revolutionary Mobile-First Design */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 animate-fade-in-up animation-delay-900">
       {[
         {
-          icon: '🚛',
-          title: 'ส่งทั่วประเทศ',
-          desc: 'มีเก็บปลายทาง (ขอมัดจำก่อน)',
+          icon: '🚀',
+          title: 'ติดตั้งรวดเร็ว',
+          desc: 'ทีมงานมืออาชีพ พร้อมเครื่องมือครบครัน งานเสร็จภายใน 1-3 วัน',
         },
         {
-          icon: '🌿',
-          title: 'หญ้าจัดสวนทุกชนิด',
-          desc: 'ส่งจริงแล้วกว่า 3,500 ออเดอร์ – ลูกค้าทั่วไทยไว้วางใจ',
+          icon: '🎨',
+          title: 'ออกแบบเฉพาะ',
+          desc: 'Custom Design ตามความต้องการ ปรึกษาฟรี 3D Modeling',
         },
         {
-          icon: '🧑🏿‍🌾',
-          title: 'จัดสวนครบวงจร',
-          desc: 'ประสบการณ์จัดสวนกว่า 10 ปี – งานเนียบ ส่งไว ดูแลครบ',
+          icon: '🛡️',
+          title: 'รับประกันผลงาน',
+          desc: 'มั่นใจในคุณภาพ รับประกาน 3 ปีเต็ม บริการหลังการขายครบครัน',
         },
       ].map((item, i) => (
         <div
           key={i}
-          className= " bg-black/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 text-left text-sm sm:text-base"
+          className="group relative bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/30 hover:border-green-400/60 transition-all duration-700 hover:bg-white/20 hover:scale-105 hover:rotate-1 shadow-xl hover:shadow-2xl"
+          style={{ animationDelay: `${i * 200}ms` }}
         >
-          <div className="text-3xl sm:text-4xl mb-3">{item.icon}</div>
-          <h3 className="text-lg sm:text-xl font-semibold mb-2">{item.title}</h3>
-          <div className="border-b border-white/20 mb-2 hidden sm:block"></div>
-          <p className="block sm:hidden">{item.desc.slice(0, 40)}...</p>
-          <p className="hidden sm:block">{item.desc}</p>
+          {/* Glow Effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div className="relative">
+            <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500 text-center sm:text-left">
+              {item.icon}
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-green-200 group-hover:text-green-100 transition-colors text-center sm:text-left">
+              {item.title}
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300 group-hover:text-gray-200 leading-relaxed transition-colors text-center sm:text-left">
+              {item.desc}
+            </p>
+          </div>
+          
+          {/* Animated Border */}
+          <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-green-400/50 to-emerald-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+        </div>
+      ))}
+    </div>
+
+    {/* Trust Indicators - Mobile Optimized */}
+    <div className="mt-16 md:mt-20 animate-fade-in-up animation-delay-1200">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 max-w-4xl mx-auto">
+        <div className="text-center group cursor-pointer">
+          <div className="text-2xl sm:text-3xl font-black text-green-400 group-hover:text-green-300 transition-colors">15+</div>
+          <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">ปีประสบการณ์</div>
+        </div>
+        <div className="text-center group cursor-pointer">
+          <div className="text-2xl sm:text-3xl font-black text-green-400 group-hover:text-green-300 transition-colors">5,000+</div>
+          <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">โปรเจคสำเร็จ</div>
+        </div>
+        <div className="text-center group cursor-pointer">
+          <div className="text-2xl sm:text-3xl font-black text-green-400 group-hover:text-green-300 transition-colors">77</div>
+          <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">จังหวัดทั่วไทย</div>
+        </div>
+        <div className="text-center group cursor-pointer">
+          <div className="text-2xl sm:text-3xl font-black text-green-400 group-hover:text-green-300 transition-colors">100%</div>
+          <div className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">ความพึงพอใจ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
+      <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
+</section>
+
+{/* Services Section - เปลี่ยนเป็น Card Grid แบบใหม่ */}
+<section id="services" className="py-24 bg-gradient-to-b from-white to-green-50">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-20">
+      <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-100 rounded-full mb-6">
+        <span className="text-3xl">🌟</span>
+        <span className="text-green-800 font-bold">บริการของเรา</span>
+      </div>
+      <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+        สร้างสรรค์พื้นที่
+        <span className="block text-green-600">ให้สวยงามทุกมุมมอง</span>
+      </h2>
+      <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto rounded-full"></div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+      {services.map((service, index) => (
+        <div
+          key={index}
+          className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:scale-105 hover:rotate-1 border-2 border-gray-100 hover:border-green-200"
+        >
+          {/* Background gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div className="relative p-8">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-4 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <span className="text-3xl text-green-600">{service.icon}</span>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800 group-hover:text-green-700 transition-colors">
+                  {service.title}
+                </h3>
+                <div className="w-12 h-1 bg-green-400 rounded-full mt-2 group-hover:w-20 transition-all duration-300"></div>
+              </div>
+            </div>
+            
+            <p className="text-gray-600 mb-8 leading-relaxed">{service.description}</p>
+            
+            <div className="relative h-48 mb-8 rounded-2xl overflow-hidden">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-green-600/30 transition-all duration-500"></div>
+            </div>
+
+            <a
+              href={service.href}
+              className="group/btn w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-green-600 hover:to-emerald-600 text-white rounded-2xl font-bold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span className="mr-3">
+                {service.title === 'บริการขายหญ้า' ? '🌿 ดูหญ้าทั้งหมด' : '💬 สอบถามเลย'}
+              </span>
+              <svg className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </a>
+          </div>
         </div>
       ))}
     </div>
   </div>
 </section>
 
+{/* Products Section - เปลี่ยนเป็น Modern Grid Layout */}
+<section id="products" className="py-24 bg-gradient-to-b from-gray-900 to-black text-white">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-20">
+      <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-600/20 backdrop-blur-md rounded-full mb-6 border border-green-400/30">
+        <span className="text-3xl">🌱</span>
+        <span className="text-green-300 font-bold">หญ้าพรีเมียม</span>
+      </div>
+      <h2 className="text-5xl md:text-6xl font-black mb-6">
+        หญ้าคุณภาพระดับ
+        <span className="block bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
+          Export Standard
+        </span>
+      </h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        คัดสรรหญ้าเกรดเอ จากฟาร์มที่ได้มาตรฐาน พร้อมระบบจัดส่งที่รวดเร็วและปลอดภัย
+      </p>
+      <div className="mt-8 flex items-center justify-center gap-2 text-green-400">
+        <span className="text-2xl">⭐</span>
+        <span className="font-bold">มากกว่า 5,000+ ออเดอร์ ลูกค้าประทับใจทั่วประเทศ</span>
+      </div>
+    </div>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-20 sm:px-20 md:px-16 lg:px-4 ">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl font-bold text-green-800 mb-6"><span className='text-4xl'>🌲</span> บริการของเรา</h2>
-            <p className="text-4xl text-black font-bold">เราช่วยเติมความสดชื่น<span className='block mt-2'>ให้ทุกพื้นที่ของคุณ</span></p>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      {grassProducts.map((product, index) => (
+        <div
+          key={index}
+          className="group relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl overflow-hidden border border-gray-700 hover:border-green-500/50 transition-all duration-500 hover:scale-105"
+        >
+          {/* Product Image */}
+          <div className="relative h-64 overflow-hidden">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+            
+            {/* Price tag or badge */}
+            <div className="absolute top-4 right-4 px-4 py-2 bg-green-500 text-white rounded-full text-sm font-bold shadow-lg">
+              Premium
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-           {services.map((service, index) => (
-  <div
-    key={index}
-    className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
-  >
-    <div className="text-green-800 mb-4 transition-transform duration-300">
-      {service.icon}
-    </div>
-    <h3 className="text-2xl font-semibold text-gray-800 mb-3">{service.title}</h3>
-    <p className="text-gray-600">{service.description}</p>
-    
-    <Image
-      src={service.image}
-      alt={service.title}
-      width={500}
-      height={250}
-      className="rounded-2xl w-full h-55 object-cover group-hover:scale-105 transition-transform duration-300 mt-5 "
-    />
-
-    {/* CTA Button */}
- <a data-aos="zoom-in"
-  data-aos-delay="300"
-  data-aos-duration="400"
-  data-aos-easing="ease-in-out"
-  href={service.href}
-  className="group inline-flex items-center justify-center mt-6 px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-white text-green-700 border border-green-600 shadow-sm hover:bg-green-600 hover:text-white hover:shadow-lg transition-all duration-300"
->
-  <span className="text-sm sm:text-base font-medium tracking-wide">
-    {service.title === 'บริการขายหญ้า' ? 'เลือกชมหญ้า' : 'สอบถามทางไลน์'}
-  </span>
-  <svg
-    className="ml-3 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    viewBox="0 0 24 24"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-  </svg>
-</a>
-  </div>
-))}
-
+          <div className="p-8">
+            <h3 className="text-2xl font-bold mb-4 group-hover:text-green-400 transition-colors">
+              {product.name}
+            </h3>
+            <p className="text-gray-400 mb-8 leading-relaxed">{product.description}</p>
+            
+            {/* Action buttons */}
+            <div className="flex gap-4">
+              <a
+                href="https://line.me/ti/p/zSV34qgq4u"
+                target="_blank"
+                className="flex-1 group/btn bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-4 rounded-2xl font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <img src="/img/line.webp" className="w-6 h-6 rounded-full" alt="Line" />
+                  สอบถามราคา
+                </span>
+              </a>
+              
+              <a
+                href="tel:0801738530"
+                className="px-6 py-4 bg-gray-700 hover:bg-gray-600 text-white rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                📞
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
 
-      {/* Products Section */}
-      <section id="products" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-green-800 mb-6"><span className='text-4xl'>🌿</span>หญ้าที่เราขาย</h2>
-            <p className="text-4xl text-black font-bold">หญ้าเกรดคัดสรรคุณภาพสูง<span className='block mt-2'>พร้อมจัดส่งทั่วประเทศ</span></p>
-            <p className="text-sm text-gray-500 mt-6">👤 ยอดขายมากกว่า 3,500 ออเดอร์ทั่วไทย ลูกค้ายืนยันคุณภาพ</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {grassProducts.map((product, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group border border-gray-100"
-              >
-                <div className="relative h-64 w-full overflow-hidden">
-                <Image
-                src={product.image}
-                alt="product"
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                 <div className="w-full flex justify-center">
-  <div className="flex gap-4 items-center">
-    <a href='https://line.me/ti/p/zSV34qgq4u' target='_blank' className="group inline-flex items-center gap-2 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-medium text-sm md:text-base px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
-      <img
-        src="/img/line.webp"
-        className="transition-transform group-hover:-translate-y-[1px] w-8 h-8 rounded-2xl"
-        alt="ไลน์"
-      />
-      สอบถามราคา
-    </a>
-    <a
-      href="tel:0801738530"
-      className="group inline-flex items-center gap-2 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white font-medium text-sm md:text-base px-5 py-3 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
-    >
-      <Phone className="w-5 h-5 group-hover:-translate-y-[1px] transition-transform" />
+    {/* Bottom section - เปลี่ยนเป็น split layout */}
+    <div className="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-6">
+        <h3 className="text-3xl font-bold text-green-400">
+          🌍 ส่งทั่วไทย การันตีคุณภาพ
+        </h3>
+        <p className="text-xl text-gray-300 leading-relaxed">
+          ไม่ว่าคุณจะอยู่จังหวัดไหน เรามีระบบจัดส่งที่เชื่อถือได้ พร้อมบริการหลังการขายที่ครบครัน
+        </p>
+        <div className="text-lg text-green-300">
+          ✨ ชมตัวอย่างหญ้าจริงได้ที่ฟาร์มของเรา ก่อนตัดสินใจ
+        </div>
+      </div>
       
-    </a>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <a
+          href="/portfolio"
+          className="group block p-8 bg-gradient-to-br from-green-600 to-emerald-700 rounded-3xl transform hover:scale-105 transition-all duration-300 shadow-2xl"
+        >
+          <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📸</div>
+          <h4 className="text-xl font-bold mb-2">ดูผลงานจริง</h4>
+          <p className="text-green-100 text-sm">กว่า 5,000 โปรเจค ผลงานที่ภูมิใจ</p>
+        </a>
+        
+        <a
+          href="https://www.google.com/maps/place/14%C2%B001'22.5%22N+100%C2%B053'25.9%22E/@14.022903,100.8879441,17z/data=!3m1!4b1!4m4!3m3!8m2!3d14.022903!4d100.890519?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          className="group block p-8 bg-gradient-to-br from-gray-700 to-gray-800 border-2 border-gray-600 hover:border-green-500 rounded-3xl transform hover:scale-105 transition-all duration-300 shadow-2xl"
+        >
+          <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📍</div>
+          <h4 className="text-xl font-bold mb-2">มาดูที่ฟาร์ม</h4>
+          <p className="text-gray-300 text-sm">Google Maps นำทางตรงไปฟาร์ม</p>
+        </a>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Product Features */}
-             <div className="mt-12 text-center text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
-  ไม่ว่าคุณจะอยู่จังหวัดไหน เรามีบริการจัดส่งหญ้าคุณภาพถึงหน้าบ้าน  
-  หรือหากต้องการปลูกด้วยตนเอง เรายินดีแพ็คส่งถึงที่  
-  <span className="block mt-2">
-    🌱 แวะชมตัวอย่างหญ้าจริงได้ที่สวนของเรา ก่อนตัดสินใจสั่งซื้อ
-  </span>
-</div>
-<div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto px-4">
-
-  {/* รีวิวผลงาน Button */}
-  <a data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="900"
-              data-aos-easing="ease-in-out"
-    href="/portfolio"
-    className="relative group bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300"
-  >
-    <div className="flex items-center gap-8 bg-white rounded-[calc(1.5rem-4px)] p-5 sm:p-6">
-      <div className="relative">
-        <div className="absolute -inset-1 bg-emerald-400 blur-lg opacity-30 rounded-full animate-pulse"></div>
-        <div className="relative z-10 text-green-700 text-3xl p-3 rounded-full bg-emerald-100 shadow-inner">
-          📸
-        </div>
+{/* Portfolio Section - เปลี่ยนเป็น Masonry Layout */}
+<section id="reviews" className="py-24 bg-gradient-to-b from-green-50 to-white">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-20">
+      <div className="inline-flex items-center gap-3 px-6 py-3 bg-white shadow-lg rounded-full mb-6 border border-green-200">
+        <span className="text-3xl">🏆</span>
+        <span className="text-green-800 font-bold">ผลงานของเรา</span>
       </div>
-      <div>
-        <p className="text-lg font-bold text-green-800 group-hover:text-green-900">
-          ภาพผลงาน
-        </p>
-        <p className="text-sm text-gray-500">
-          กว่า 3,500 งานที่เราภูมิใจ แค่คลิกก็เห็นภาพชัดเจน
-        </p>
+      <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+        มากกว่า 15 ปี
+        <span className="block text-green-600">แห่งความเชี่ยวชาญ</span>
+      </h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        ด้วยประสบการณ์ที่สั่งสมมายาวนาน เราได้สร้างสรรค์พื้นที่สีเขียวให้กับลูกค้ามากกว่า 5,000 โปรเจค
+      </p>
+      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
+        <div className="text-center">
+          <div className="text-3xl font-black text-green-600">5,000+</div>
+          <div className="text-sm text-gray-500">โปรเจคสำเร็จ</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-black text-green-600">15+</div>
+          <div className="text-sm text-gray-500">ปีประสบการณ์</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-black text-green-600">77</div>
+          <div className="text-sm text-gray-500">จังหวัด</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-black text-green-600">100%</div>
+          <div className="text-sm text-gray-500">ความพึงพอใจ</div>
+        </div>
       </div>
     </div>
-  </a>
 
-  {/* แผนที่สวน Button */}
-  <a data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="900"
-              data-aos-easing="ease-in-out"
-    href="https://www.google.com/maps/place/14%C2%B001'22.5%22N+100%C2%B053'25.9%22E/@14.022903,100.8879441,17z/data=!3m1!4b1!4m4!3m3!8m2!3d14.022903!4d100.890519?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="relative group bg-gradient-to-r from-gray-100 via-white to-gray-50 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300 border border-green-200"
-  >
-    <div className="flex items-center gap-8 bg-green-700 rounded-[calc(1.5rem-4px)] p-5 sm:p-6 text-white">
-      <div className="relative">
-        <div className="absolute -inset-1 bg-white blur-lg opacity-10 rounded-full animate-pulse"></div>
-        <div className="relative z-10 bg-white text-green-700 text-3xl p-3 rounded-full shadow-inner group-hover:bg-green-100">
-          📍
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-bold">
-          มาชมหญ้าที่สวนเรา
-        </p>
-        <p className="text-sm text-green-100">
-          ดูพิกัดชัด ๆ บน Google Maps กดแล้วพามาเลย
-        </p>
-      </div>
-    </div>
-  </a>
-
-</div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section id="reviews" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-           <h2 className="text-2xl font-bold text-green-800 mb-6"><span className='text-3xl'>📗</span>ผลงาน</h2>
-            <p className="text-4xl text-black font-bold">ประสบการณ์ทำงานมากกว่า 10 ปี<span className='block mt-2'>ผู้ซื้อจริงมากกว่า 3500 รายการทั่วไทย</span></p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioItems.map((item, index) => (
-              <div
-                key={index}
-                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-              >
-              <Image
-              className="rounded-2xl object-cover aspect-[3/4] w-full h-auto"
+    {/* Portfolio Grid - เปลี่ยนเป็น staggered layout */}
+    <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+      {portfolioItems.map((item, index) => (
+        <div
+          key={index}
+          className="group relative break-inside-avoid bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 border border-gray-100"
+        >
+          <div className="relative overflow-hidden">
+            <Image
               src={item.image}
+              alt={item.title}
               width={400}
-              height={533} // 3:4 ratio
-              alt="product"
-             />
-
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-white text-center p-6">
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+              height={300}
+              className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
+          <div className="p-8">
+            <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">{item.description}</p>
+          </div>
+          
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-green-600/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-8">
+            <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p className="text-green-100">{item.description}</p>
+            </div>
           </div>
         </div>
-       <div className="mt-16 flex justify-center px-4">
-  {/* รีวิวผลงาน Button */}
-  <a data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="900"
-              data-aos-easing="ease-in-out"
-    href="/portfolio"
-    className="relative group bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500 p-1 rounded-3xl shadow-xl hover:scale-105 transform transition-all duration-300"
-  >
-    <div className="flex items-center gap-8 bg-white rounded-[calc(1.5rem-4px)] p-5 sm:p-6">
-      <div className="relative">
-        <div className="absolute -inset-1 bg-emerald-400 blur-lg opacity-30 rounded-full animate-pulse"></div>
-        <div className="relative z-10 text-green-700 text-3xl p-3 rounded-full bg-emerald-100 shadow-inner">
-          📸
-        </div>
-      </div>
-      <div>
-        <p className="text-lg font-bold text-green-800 group-hover:text-green-900">
-          ภาพผลงานทั้งหมด   
-        </p>
-        <p className="text-sm text-gray-500">
-          กว่า 3,500 งานที่เราภูมิใจ แค่คลิกก็เห็นภาพชัดเจน
-        </p>
-      </div>
+      ))}
     </div>
-  </a>
-</div>
 
-      </section>
+    {/* Call to action */}
+    <div className="mt-20 text-center">
+      <a
+        href="/portfolio"
+        className="group inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-600 via-emerald-600 to-green-700 hover:from-green-500 hover:via-emerald-500 hover:to-green-600 text-white rounded-full text-xl font-bold shadow-2xl hover:shadow-green-500/25 transition-all duration-500 transform hover:scale-105"
+      >
+        <span className="text-3xl group-hover:scale-110 transition-transform">📱</span>
+        <span>ดูผลงานทั้งหมด</span>
+        <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </a>
+      <p className="mt-6 text-gray-500 text-lg">
+        มากกว่า 5,000 โปรเจคที่เราภูมิใจ พร้อมแสดงให้คุณเห็น
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Contact Section */}
       {/* Contact Section */}
