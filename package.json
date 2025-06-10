@@ -1,5 +1,5 @@
 {
-  "name": "somsamai",
+  "name": "abang-grass-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,8 +21,10 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "autoprefixer": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "postcss": "^8.0.0",
     "tailwindcss": "^4"
   }
 }
