@@ -2,11 +2,17 @@
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import React, { useState, useEffect } from 'react';
+import { ChevronRight , Mountain } from 'lucide-react'
 import {
   Phone, MessageCircle, Truck, Scissors, Package, TreePine, MapPin, Star, Leaf,
   Users, Award, Clock, CheckCircle, ArrowRight, Shield, Heart, Target, Camera
 } from 'lucide-react';
 import Image from 'next/image';
+  import Product from "@/compo/Product/page";
+  import Service from "@/compo/Service/page";
+  import Navbar from "@/compo/Navbar/page"
+import Line from '@/compo/Line/page';
+import Contact from '@/compo/Contact/page';
 
 const ServicesProductsDetail = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -22,19 +28,18 @@ const ServicesProductsDetail = () => {
 
 const detailedServices = [
     {
-      id: 'grass-selling',
+      id: 'grass',
       icon: <Leaf className="w-12 h-12" />,
       title: 'บริการขายหญ้าคุณภาพสูง',
       subtitle: 'หญ้าเกรดพรีเมี่ยม ส่งตรงจากแปลง',
+      price: 'เริ่มต้น 14 บาท/ต.ร.ม.',
       description: 'จำหน่ายหญ้าคุณภาพสูงหลากหลายชนิด เหมาะกับทุกการใช้งาน ตั้งแต่สนามหญ้าทั่วไป จนถึงสนามกอล์ฟระดับมาตรฐาน',
-      image: '/img/allgrass.png',
+      image: '/service/sellgrass.png',
       features: [
         'หญ้าคัดสรรคุณภาพสูง ตรวจสอบก่อนส่ง',
         'ส่งทั่วประเทศ มีเก็บปลายทาง',
         'ราคาโรงงาน ไม่ผ่านแม่ค้าคนกลาง',
-        'รับประกันคุณภาพ หากไม่พอใจยินดีเปลี่ยน',
-        'มีบริการปรึกษาการเลือกหญ้าฟรี',
-        'จัดส่งเร็ว ภายใน 2-3 วันทั่วประเทศ'
+        'มีบริการปรึกษาการเลือกหญ้าฟรี'
       ],
       process: [
         { step: '1', title: 'สอบถามความต้องการ', desc: 'ปรึกษาประเภทหญ้าที่เหมาะสม' },
@@ -46,18 +51,17 @@ const detailedServices = [
       contact: 'สอบถามราคาและรายละเอียด'
     },
     {
-      id: 'garden-design',
+      id: 'garden',
       icon: <Scissors className="w-12 h-12" />,
       title: 'จัดและตัดแต่งสวน',
+      price: 'เริ่มต้น 5000 บาท',
       subtitle: 'งานจัดสวนครบวงจร โดยช่างมืออาชีพ',
       description: 'บริการจัดสวนแบบครบวงจร ตั้งแต่การออกแบบ ปลูกหญ้า ตัดแต่ง จนถึงการดูแลรักษา โดยทีมช่างที่มีประสบการณ์มากกว่า 10 ปี',
-      image: '/img/garden.png',
+      image: '/service/poograss.png',
       features: [
         'ออกแบบสวนตามความต้องการลูกค้า',
         'ช่างมืออาชีพ ประสบการณ์กว่า 10 ปี',
         'ใช้อุปกรณ์และเครื่องมือครบครัน',
-        'รับประกันงาน 6 เดือน',
-        'บริการหลังการขาย ดูแลต่อเนื่อง',
         'ราคาเป็นกันเอง เจรจาได้'
       ],
       process: [
@@ -70,12 +74,13 @@ const detailedServices = [
       contact: 'ปรึกษาการจัดสวนฟรี'
     },
     {
-      id: 'tree-sourcing',
+      id: 'tree',
       icon: <TreePine className="w-12 h-12" />,
       title: 'จัดหาต้นไม้',
+      price: 'เริ่มต้น 1000 บาท',
       subtitle: 'คัดสรรต้นไม้คุณภาพ ทุกชนิด ทุกขนาด',
       description: 'บริการจัดหาต้นไม้หายาก ต้นไม้มงคล และต้นไม้ตัดแต่งทุกชนิด จากแหล่งที่เชื่อถือได้ พร้อมการดูแลขนส่งอย่างปลอดภัย',
-      image: '/img/tree.png',
+      image: '/service/findtree.png',
       features: [
         'จัดหาต้นไม้ทุกชนิด รวมถึงต้นไม้หายาก',
         'คัดสรรจากแปลงที่มีคุณภาพ',
@@ -92,17 +97,42 @@ const detailedServices = [
         { step: '5', title: 'บริการปลูก', desc: 'ปลูกและดูแลเบื้องต้น' }
       ],
       contact: 'สั่งจองต้นไม้'
-    }
+    },
+    {
+    id: 'rock',
+    price: 'เริ่มต้น 5000 บาท',
+    icon: <Mountain className="w-12 h-12" />,
+    title: 'จัดสวนหิน',
+    subtitle: 'สวนหินสไตล์ญี่ปุ่นและโมเดิร์น',
+    description:'บริการจัดสวนหินสำหรับบ้านและสำนักงาน ออกแบบโดยผู้เชี่ยวชาญ  พร้อมจัดวางหิน พืชพรรณ และองค์ประกอบตกแต่งอย่างลงตัว',
+    image: '/service/rock.png', // อย่าลืมใส่รูปหรือสร้างรูปนี้
+    features: [
+      'ออกแบบสวนหินตามพื้นที่และงบประมาณ',
+      'เลือกใช้หินแท้และพืชที่ดูแลง่าย',
+      'สไตล์หลากหลาย เช่น ญี่ปุ่น มินิมอล โมเดิร์น',
+      'ทีมช่างมืออาชีพ จัดวางอย่างปราณีต',
+      'ดูแลความสะอาดและความเรียบร้อยหลังจบงาน',
+      'ให้คำแนะนำการดูแลรักษาหลังติดตั้ง'
+    ],
+    process: [
+      { step: '1', title: 'รับฟังความต้องการ', desc: 'สอบถามแนวทางหรือสไตล์ที่ลูกค้าชอบ' },
+      { step: '2', title: 'สำรวจพื้นที่', desc: 'เข้าดูหน้างานเพื่อประเมินการออกแบบ' },
+      { step: '3', title: 'ออกแบบสวน', desc: 'นำเสนอแบบจำลองก่อนเริ่มงานจริง' },
+      { step: '4', title: 'จัดวางหินและองค์ประกอบ', desc: 'ลงพื้นที่จัดสวนตามแบบที่ตกลง' },
+      { step: '5', title: 'ตรวจรับและแนะนำดูแล', desc: 'ส่งมอบงานพร้อมคำแนะนำ' }
+    ],
+    contact: 'สอบถามจัดสวนหิน'
+  }
   ];
 
   const grassProducts = [
     {
-      id: 'nuan-noy',
+      id: 'nuannoy',
       name: 'หญ้านวลน้อย',
       scientificName: 'Zoysia matrella',
       description: 'หญ้าคุณภาพสูงที่ได้รับความนิยมมากที่สุดในประเทศไทย เหมาะสำหรับสนามหญ้าทั่วไป ทนแล้ง ทนเหยียบย่ำ และดูแลง่าย',
       image: '/product/nuannoy.jpg',
-      price: 'เริ่มต้น 8-12 บาท/ตร.ม.',
+      price: 'เริ่มต้น 14 บาท/ตร.ม.',
       features: [
         'ทนแล้งและทนร้อนได้ดีเยี่ยม',
         'ทนการเหยียบย่ำและการใช้งานหนัก',
@@ -126,12 +156,12 @@ const detailedServices = [
       ]
     },
     {
-      id: 'japanese-grass',
+      id: 'japan',
       name: 'หญ้าญี่ปุ่น',
       scientificName: 'Zoysia japonica',
       description: 'หญ้าเกรดพรีเมี่ยมที่มีความนุ่มและสีเขียวสวยงาม เหมาะสำหรับสนามกอล์ฟและพื้นที่ที่ต้องการความสวยงามสูง',
       image: '/product/japan.jpg',
-      price: 'เริ่มต้น 15-20 บาท/ตร.ม.',
+      price: 'เริ่มต้น 15 บาท/ตร.ม.',
       features: [
         'ใบหญ้านุ่มและละเอียด เกรดพรีเมี่ยม',
         'สีเขียวสวยงาม ดูหรูหรา',
@@ -155,12 +185,12 @@ const detailedServices = [
       ]
     },
     {
-      id: 'malaysian-grass',
+      id: 'malaysia',
       name: 'หญ้ามาเลเซีย',
       scientificName: 'Axonopus compressus',
       description: 'หญ้าใบหนาที่ทนร้อนและทนแล้งได้ดีเยี่ยม เหมาะสำหรับภูมิอากาศเมืองไทย สามารถปลูกในแดดจัดได้ดี',
       image: '/product/malaysia.jpg',
-      price: 'เริ่มต้น 10-15 บาท/ตร.ม.',
+      price: 'เริ่มต้น 17 บาท/ตร.ม.',
       features: [
         'ทนร้อนและแล้งได้ดีที่สุด',
         'ใบหญ้าหนา ทนทานแข็งแรง',
@@ -184,12 +214,12 @@ const detailedServices = [
       ]
     },
     {
-      id: 'paspalum-grass',
+      id: 'paspalum',
       name: 'หญ้าพลาสพาลั่ม',
       scientificName: 'Paspalum vaginatum',
       description: 'หญ้าใบแคบที่ทนแล้งได้ดีมาก เหมาะสำหรับพื้นที่ที่มีน้ำน้อย หรือพื้นที่แห้งแล้ง ดูแลรักษาง่าย',
       image: '/product/plaspalum.jpg',
-      price: 'เริ่มต้น 12-18 บาท/ตร.ม.',
+      price: 'เริ่มต้น 16 บาท/ตร.ม.',
       features: [
         'ทนแล้งสุดขั้ว อยู่ได้โดยไม่ต้องรดน้ำนาน',
         'ใบหญ้าแคบ ดูเป็นธรรมชาติ',
@@ -213,12 +243,12 @@ const detailedServices = [
       ]
     },
     {
-      id: 'bermuda-grass',
+      id: 'bermuda',
       name: 'หญ้าเมอร์บิวด้า',
       scientificName: 'Cynodon dactylon',
       description: 'หญ้าที่ทนทานและเจริญเติบโตเร็วที่สุด เหมาะสำหรับสนามกีฬาที่ต้องการการฟื้นตัวเร็วหลังการใช้งานหนัก',
       image: '/product/bermuda.jpg',
-      price: 'เริ่มต้น 10-16 บาท/ตร.ม.',
+      price: 'เริ่มต้น 32 บาท/ตร.ม.',
       features: [
         'เจริญเติบโตและฟื้นตัวเร็วที่สุด',
         'ทนการเหยียบย่ำหนักมาก',
@@ -242,12 +272,12 @@ const detailedServices = [
       ]
     },
     {
-      id: 'taipei-grass',
+      id: 'thaipay',
       name: 'หญ้าไทเปย์',
       scientificName: 'Zoysia tenuifolia',
       description: 'หญ้าใบเล็กที่มีสีเขียวเข้มสวยงาม เหมาะสำหรับการตกแต่งและงานแลนด์สเคป ให้ความรู้สึกหรูหราและเป็นธรรมชาติ',
       image: '/product/thaipay.jpg',
-      price: 'เริ่มต้น 18-25 บาท/ตร.ม.',
+      price: 'เริ่มต้น 90 บาท/กิโลกรัม',
       features: [
         'ใบหญ้าเล็กและละเอียดที่สุด',
         'สีเขียวเข้มสวยงามตลอดปี',
@@ -272,163 +302,37 @@ const detailedServices = [
     }
   ];
 
-  const additionalServices = [
-    {
-      title: 'บริการส่งและติดตั้ง',
-      icon: <Truck className="w-8 h-8" />,
-      details: [
-        'จัดส่งทั่วประเทศ ภายใน 2-3 วัน',
-        'มีบริการเก็บปลายทาง',
-        'ทีมช่างติดตั้งมืออาชีพ',
-        'รับประกันการติดตั้ง'
-      ]
-    },
-    {
-      title: 'การรับประกัน',
-      icon: <Shield className="w-8 h-8" />,
-      details: [
-        'รับประกันคุณภาพหญ้า 30 วัน',
-        'รับประกันงานติดตั้ง 6 เดือน',
-        'บริการเปลี่ยนหญ้าหากไม่พอใจ',
-        'ดูแลหลังการขายตลอดชีพ'
-      ]
-    },
-    {
-      title: 'คำปรึกษาฟรี',
-      icon: <Heart className="w-8 h-8" />,
-      details: [
-        'ปรึกษาการเลือกหญ้าฟรี',
-        'คำนวณจำนวนหญ้าที่ต้องใช้',
-        'แนะนำการดูแลรักษา',
-        'ติดตามผลหลังการปลูก'
-      ]
-    }
-  ];
-
+ 
   return (
-    <div className="min-h-screen bg-white text-green-900">
-      <nav
-  className={`fixed w-full z-50 transition-all duration-300 ${
-    scrollY > 680
-      ? 'bg-green-950/90 backdrop-blur-sm shadow-md border-b border-green-700'
-      : 'bg-transparent'
-  }`}
->
-  <div className="max-w-6xl mx-auto px-4 py-4 flex justify-end sm:justify-center items-center">
-
-    {/* เมนู Desktop/iPad (md ขึ้นไป) */}
-    <div className="hidden sm:flex space-x-8 items-center">
-      {[
-        { label: 'หน้าแรก', href: '/' },
-        { label: ' | ', isDivider: true },
-        { label: 'บริการ', href: '/service#services' },
-        { label: ' | ', isDivider: true },
-        { label: 'สินค้า', href: '/service#products' },
-        { label: ' | ', isDivider: true },
-        { label: 'ผลงาน', href: '/portfolio' },
-        { label: ' |    ', isDivider: true },
-        { label: 'ติดต่อ', href: '/contact' },
-      ].map((item, index) =>
-        item.isDivider ? (
-          <span
-            key={index}
-            className="text-white select-none pointer-events-none"
-          >
-            |
-          </span>
-        ) : (
-          <a
-            key={index}
-            href={item.href}
-            className="text-white hover:text-green-300 transition-colors duration-300"
-          >
-            {item.label}
-          </a>
-        )
-      )}
+    <div className="min-h-screen bg-white text-black overflow-y-hidden">
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 animate-bounce">
+      <ChevronRight
+        className="transform rotate-90 text-green-800"
+        size={32}
+        strokeWidth={2.5}
+      />
     </div>
+        <Navbar />
 
-    {/* ปุ่ม Hamburger (มือถือ) */}
-    <div className="sm:hidden">
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="text-white focus:outline-none"
-      >
-        {menuOpen ? (
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        ) : (
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        )}
-      </button>
-    </div>
-  </div>
+        
 
-  {/* เมนูมือถือ */}
-  {menuOpen && (
-    <div className="md:hidden bg-green-950/90 backdrop-blur-sm border-t border-green-700 px-6 py-4 space-y-4">
-      {[
-        { label: 'หน้าแรก', href: '/' },
-        { label: 'บริการ', href: '/service#services' },
-        { label: 'สินค้า', href: '/service#products' },
-        { label: 'ผลงาน', href: '/portfolio' },
-        { label: 'ติดต่อ', href: '/contact' },
-      ].map((item, index) => (
-        <a
-          key={index}
-          href={item.href}
-          className="block text-white hover:text-green-300 transition-colors duration-300"
-          onClick={() => setMenuOpen(false)}
-        >
-          {item.label}
-        </a>
-      ))}
-    </div>
-  )}
-</nav>
+  
+<div className='pt-10 relative'>
 
-      <header className="pt-28 pb-16 bg-black/90 text-white text-center relative">
-          <div 
-          className="absolute inset-0 bg-cover bg-center opacity-45"
-          style={{ backgroundImage: "url('/img/revhero.jpg')" }}
-        />
-        <h1 className="text-4xl font-bold mb-2">บริการและสินค้าของเรา</h1>
-        <p className="text-lg">ครบจบในที่เดียว เพื่อสวนสวยของคุณ</p>
-      </header>
+ <Product />
+      <Service />
+</div>
 
-      <section id="services" className="max-w-6xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-bold text-center mb-10">บริการของเรา</h2>
+      <section id="detailed_services" className="max-w-6xl mx-auto py-12 px-4">
+        <h2 className="text-3xl font-bold text-center mb-10 text-black">รายการบริการของเราอย่างละเอียด</h2>
         <div className="space-y-20">
           {detailedServices.map(service => (
-            <div key={service.id} className="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+            <div id={service.id} key={service.id} className="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
               <Image src={service.image} alt={service.title} width={600} height={400} className="rounded-2xl shadow-lg" />
               <div>
                 <div className="flex items-center gap-4 mb-2">{service.icon}<h3 className="text-2xl font-bold">{service.title}</h3></div>
                 <p className="text-green-700 italic mb-2">{service.subtitle}</p>
-                <p className="mb-4">{service.description}</p>
+                <p className="mb-4 ">{service.description}</p>
                 <ul className="list-disc list-inside space-y-1 text-green-800">
                   {service.features.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
@@ -441,22 +345,27 @@ const detailedServices = [
                   </ol>
                 </div>
                 <div className="mt-4 text-green-900 font-bold">📞 {service.contact}</div>
+                      <p className="font-semibold text-xl text-green-900  mt-2">💰 {service.price}</p>
+                 <button className="w-full bg-green-800 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-green-700 transition-all duration-300 text-sm font-semibold mt-5">
+                      <a target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
+                        สอบถาม
+                      </a>
+                    </button>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="products" className="bg-green-50 py-12 px-4">
-        <h2 className="text-3xl font-bold text-center mb-10 text-green-900">ประเภทหญ้าที่จำหน่าย</h2>
+      <section id="detailed_products" className=" py-12 px-4 bg-white">
+        <h2 className="text-3xl font-bold text-center mb-10 text-black">ประเภทหญ้าที่จำหน่าย</h2>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {grassProducts.map(grass => (
-            <div key={grass.id} className="bg-white shadow-md rounded-2xl p-4" data-aos="zoom-in">
+            <div id={grass.id} key={grass.id} className="bg-white shadow-md rounded-2xl p-4" data-aos="zoom-in">
               <Image src={grass.image} alt={grass.name} width={400} height={300} className="rounded-xl mb-4" />
-              <h3 className="text-xl font-bold text-green-800">{grass.name}</h3>
+              <h3 className="text-xl font-bold text-black">{grass.name}</h3>
               <p className="italic text-sm text-green-600 mb-1">{grass.scientificName}</p>
               <p className="mb-2 text-sm text-gray-700">{grass.description}</p>
-              <p className="font-semibold text-green-900 mb-2">💰 {grass.price}</p>
               <ul className="text-sm list-disc list-inside mb-2">
                 {grass.features.map((f, i) => <li key={i}>{f}</li>)}
               </ul>
@@ -472,47 +381,24 @@ const detailedServices = [
                   {grass.maintenance.map((m, i) => <li key={i}>{m}</li>)}
                 </ul>
               </div>
+               <p className="font-semibold text-xl text-green-900 mt-4">💰 {grass.price}</p>
+               <button className="w-full bg-green-800 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-green-700 transition-all duration-300 text-sm font-semibold mt-3">
+                      <a target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
+                        สอบถาม
+                      </a>
+                    </button>
             </div>
+            
           ))}
         </div>
       </section>
 
-      <section className="py-12 px-4 bg-white">
-        <h2 className="text-3xl font-bold text-center mb-8 text-green-900">บริการเพิ่มเติม</h2>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-          {additionalServices.map((service, i) => (
-            <div key={i} className="bg-green-100 rounded-xl p-6 shadow" data-aos="fade-up">
-              <div className="flex items-center gap-3 mb-2 text-green-800">{service.icon}<h3 className="font-semibold text-lg">{service.title}</h3></div>
-              <ul className="list-disc list-inside text-sm text-green-700">
-                {service.details.map((d, idx) => <li key={idx}>{d}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
+     <Contact />
       
       {/* Floating Contact Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-  <a
-    href="https://line.me/ti/p/zSV34qgq4u"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group relative flex items-center justify-center w-16 h-16 bg-[#00C300] rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
-  >
-    <img
-      src="/img/line.webp"
-      alt="LINE"
-      className="w-8 h-8 rounded-2xl"
-    />
-    <span className="absolute bottom-full mb-2 px-3 py-1 text-xs text-white bg-black bg-opacity-80 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-      แชทผ่าน LINE
-    </span>
-  </a>
-</div>
+      <Line />
 
-      <footer className="bg-green-950 text-white text-center py-6 mt-10">
-        <p>© {new Date().getFullYear()} ไร่หญ้าอะดิแท็ป. สงวนลิขสิทธิ์.</p>
-      </footer>
+      
     </div>
   );
 };
