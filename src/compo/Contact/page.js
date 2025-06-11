@@ -14,23 +14,23 @@ export default function Contact (){
         
             <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
               {/* ปุ่มโทร */}
-              <a
+              <Link
                 href="tel:0806746678"
                 className="bg-green-700 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:scale-105 transform transition-all"
               >
                 📞 โทรหาเราเลย
-              </a>
+              </Link>
         
         
               {/* ปุ่มดูแผนที่ */}
-              <a
+              <Link
                 href="https://maps.app.goo.gl/JpjG5kaiViVzvfCe7" // เปลี่ยนลิงก์ให้เป็นพิกัดหรือชื่อร้านจริง
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-blue-700 transition"
               >
                 📍 ดูแผนที่ร้าน
-              </a>
+              </Link>
         
               {/* โซเชียลมีเดีย */}
               <div className="flex gap-4 items-center flex-wrap justify-center">
@@ -41,7 +41,7 @@ export default function Contact (){
                   { href: "https://www.tiktok.com/@mlui3?_t=ZS-8x1Yh7q5FrB&_r=1", src: "/img/tiktok.webp", alt: "TikTok" , w:"50",h:"50" },
                   { href: "https://www.instagram.com/sirmal_6678?igsh=ZWp3ZTdsMXR3Z25n", src: "/img/ig.svg", alt: "Instagram", w:"32" , h:"32" },
                 ].map(({ href, src, alt , w , h }) => (
-                  <a
+                  <Link
                     key={alt}
                     href={href}
                     target="_blank"
@@ -55,7 +55,7 @@ export default function Contact (){
                       height={h}
                       className="object-contain"
                     />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

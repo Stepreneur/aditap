@@ -25,13 +25,13 @@
                   {/* Logo */}
                   <div className="flex items-center space-x-2">
                     <div className="w-12 h-12 rounded-lg items-center justify-center relative bg-transparent">
-                      <a href='/'>
+                      <Link href='/'>
                         <Image alt='logo' fill src="/img/bung_logo_black.png" className ="rounded-full absolute bg-transparent" />
-                      </a>
+                      </Link>
                     </div>
-                    <a href='/' className="text-base font-bold  bg-clip-text text-black">
+                    <Link href='/' className="text-base font-bold  bg-clip-text text-black">
                       ไร่หญ้าอาบังการ์เด้น 
-                    </a>
+                    </Link>
                   </div>
     
                   {/* Desktop Menu */}

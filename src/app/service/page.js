@@ -347,9 +347,9 @@ const detailedServices = [
                 <div className="mt-4 text-green-900 font-bold">📞 {service.contact}</div>
                       <p className="font-semibold text-xl text-green-900  mt-2">💰 {service.price}</p>
                  <button className="w-full bg-green-800 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-green-700 transition-all duration-300 text-sm font-semibold mt-5">
-                      <a target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
+                      <Link target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
                         สอบถาม
-                      </a>
+                      </Link>
                     </button>
               </div>
             </div>
@@ -383,9 +383,9 @@ const detailedServices = [
               </div>
                <p className="font-semibold text-xl text-green-900 mt-4">💰 {grass.price}</p>
                <button className="w-full bg-green-800 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-green-700 transition-all duration-300 text-sm font-semibold mt-3">
-                      <a target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
+                      <Link target="_blank" href="https://line.me/ti/p/guAbCz7twh" className="block">
                         สอบถาม
-                      </a>
+                      </Link>
                     </button>
             </div>
             

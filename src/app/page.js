@@ -78,12 +78,12 @@ import Contact from "@/compo/Contact/page";
                   ไร่หญ้าอาบัง ขายหญ้านวลน้อย , ไทเป , อื่นๆ รับงานทั่วประเทศ ส่งเร็ว มีของตลอด <br /> และบริการจัดสวนครบวงจร
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <a href="https://line.me/ti/p/guAbCz7twh" target="_blank" className="block bg-gradient-to-r from-green-700 via-lime-600 to-amber-800 text-white px-8 py-4 h-[60px] rounded-full font-semibold text-lg hover:bg-green-700 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl">
+                  <Link href="https://line.me/ti/p/guAbCz7twh" target="_blank" className="block bg-gradient-to-r from-green-700 via-lime-600 to-amber-800 text-white px-8 py-4 h-[60px] rounded-full font-semibold text-lg hover:bg-green-700 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl">
                     ปรึกษาฟรี
-                  </a>
-                  <a href="/portfolio" target="_blank" className="block border-2 border-green-600 text-green-800 px-8 py-4 h-[60px ] rounded-full font-semibold text-lg hover:bg-green-600 hover:text-white transition-all">
+                  </Link>
+                  <Link href="/portfolio" target="_blank" className="block border-2 border-green-600 text-green-800 px-8 py-4 h-[60px ] rounded-full font-semibold text-lg hover:bg-green-600 hover:text-white transition-all">
                     ดูผลงาน
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -148,7 +148,7 @@ import Contact from "@/compo/Contact/page";
         </div>
        <div className="mt-16 flex justify-center px-4">
   {/* รีวิวผลงาน Button */}
-  <a data-aos="zoom-in"
+  <Link data-aos="zoom-in"
               data-aos-delay="300"
               data-aos-duration="900"
               data-aos-easing="ease-in-out"
@@ -171,7 +171,7 @@ import Contact from "@/compo/Contact/page";
         </p>
       </div>
     </div>
-  </a>
+  </Link>
 </div>
 
       </section>

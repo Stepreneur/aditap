@@ -78,14 +78,14 @@
                   <div className="flex flex-col gap-5 items-start mt-4">
                     <span className="text-xl font-bold text-black">{grass.price}</span>
                     <button  className="w-full bg-green-800 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-green-700 transition-all duration-300 text-sm font-semibold">
-                      <a href="https://line.me/ti/p/guAbCz7twh" target="_blank" className="block">สอบถาม</a>
+                      <Link href="https://line.me/ti/p/guAbCz7twh" target="_blank" className="block">สอบถาม</Link>
                     </button>
-                    <a
+                    <Link
                       href={grass.id}
                       className="bg-white border w-full text-center border-green-900 text-green-900 px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:brightness-105 hover:bg-green-900 hover:text-white transition-all duration-300 text-sm font-semibold"
                     >
                       ดูรายละเอียด
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
