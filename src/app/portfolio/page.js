@@ -5,6 +5,8 @@ import { Phone, MessageCircle, Truck, Scissors, Package, TreePine, MapPin, Star,
 import Navbar from "@/compo/Navbar/page"
 import Line from '@/compo/Line/page';
 import Contact from '@/compo/Contact/page';
+import Image from 'next/image';
+
 
 const PortfolioPage = () => {
   
