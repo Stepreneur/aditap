@@ -13,6 +13,8 @@ import Image from 'next/image';
   import Navbar from "@/compo/Navbar/page"
 import Line from '@/compo/Line/page';
 import Contact from '@/compo/Contact/page';
+  import Link from 'next/link'
+
 
 const ServicesProductsDetail = () => {
   const [scrollY, setScrollY] = useState(0);
