@@ -51,11 +51,13 @@ import Contact from "@/compo/Contact/page";
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 50)
+      if (typeof window !== 'undefined') {
+        const handleScroll = () => {
+          setScrolled(window.scrollY > 50)
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
       }
-      window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     return (

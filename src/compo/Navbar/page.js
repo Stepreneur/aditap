@@ -1,4 +1,5 @@
-  import Image from 'next/image'
+"use client"
+import Image from 'next/image'
   import Link from 'next/link'
   import { useState, useEffect } from 'react'
 
@@ -8,11 +9,13 @@
       const [scrolled, setScrolled] = useState(false)
   
       useEffect(() => {
-        const handleScroll = () => {
-          setScrolled(window.scrollY > 50)
+        if (typeof window !== 'undefined') {
+          const handleScroll = () => {
+            setScrolled(window.scrollY > 50)
+          }
+          window.addEventListener('scroll', handleScroll)
+          return () => window.removeEventListener('scroll', handleScroll)
         }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
       }, [])
 
   return <div>

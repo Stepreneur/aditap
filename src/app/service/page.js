@@ -22,10 +22,12 @@ const ServicesProductsDetail = () => {
   const [activeTab, setActiveTab] = useState('services');
 
   useEffect(() => {
-    AOS.init({ duration: 800, easing: 'ease-in-out', once: true, mirror: false });
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true, mirror: false });
+      const handleScroll = () => setScrollY(window.scrollY);
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
 const detailedServices = [
